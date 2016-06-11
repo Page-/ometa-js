@@ -55,10 +55,19 @@ export ometa BSOMetaParser {
                  | ( keyword('undefined') | keyword('nil')
                    | keyword('true')      | keyword('false') ):x       -> [#App, #exactly, x]
                  | spaces (seqString | tokenString | string | number)
+                 | "@{" objectRules:x "}"                              -> [#Object,    x, true]
+                 | "%{" objectRules:x "}"                              -> [#Object,    x, false]
                  | "["  expr:x "]"                                     -> [#Form,      x]
                  | "<"  expr:x ">"                                     -> [#ConsBy,    x]
                  | "@<" expr:x ">"                                     -> [#IdxConsBy, x]
                  | "("  expr:x ")"                                     -> x,
+  objectRules    = {{}}:o
+                   (objectRule:x "," -> x)*:a
+                   objectRule:x                                        -> a.concat([x]),
+  objectRule     = BSJSParser.jsonPropName:n
+                   ( "?" -> false
+                   |     -> true
+                   ):required ":" expr:x                               -> [n, x, required],
   param          = ":" name:n                                          -> n,
   ruleName       = name
                  | spaces tsString,
@@ -101,6 +110,14 @@ export ometa BSOMetaTranslator {
   Set        :n trans:v                    -> [n, '=', v]                                                          .join(''),
   Not        transFn:x                     -> ['this._not(',           x, ')']                                     .join(''),
   Lookahead  transFn:x                     -> ['this._lookahead(',     x, ')']                                     .join(''),
+  Object     [ ( [ string:key
+                   transFn:x
+                   (true|false):required
+                   {['[', x, ',', required, ']'].join('')}:x
+                 ]
+                 -> [JSON.stringify(key), x].join(':')
+               )+:o
+             ] (true|false):matchAllInput  -> ['this._object({', o.join(','), '},', matchAllInput, ')']                                .join(''),
   Form       transFn:x                     -> ['this._form(',          x, ')']                                     .join(''),
   ConsBy     transFn:x                     -> ['this._consumedBy(',    x, ')']                                     .join(''),
   IdxConsBy  transFn:x                     -> ['this._idxConsumedBy(', x, ')']                                     .join(''),
