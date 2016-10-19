@@ -24,7 +24,7 @@
   "dependencies": {
     "coa": "~0.3.9",
     "q": "~0.9.7",
-    "uglify-js": "~2.4.13"
+    "uglify-js": "~2.6.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
