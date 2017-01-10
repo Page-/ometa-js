@@ -1,3 +1,42 @@
 export ometa Simple {
-  top = [#simple] -> 'ok'
+	FormArray =
+		[	#simple
+		]
+		-> 'ok'
+	,
+	FormObject =
+		[	[	#simple
+				true
+			]
+		]
+		-> 'ok'
+	,
+	ObjectRules =
+		@{ 'simple': true }
+		-> 'ok'
+	,
+	ObjectRulesMatchAll1 =
+			@{	'simple': true,
+				'simpler': true
+			}
+			-> 'should fail'
+		|	-> 'ok'
+	,
+	ObjectRulesMatchAll2 =
+			@{ 'simple': true }
+			-> 'should fail'
+		|	-> 'ok'
+	,
+	ObjectRulesMatchPartial1 =
+		%{ 'simple': true }
+		-> 'ok'
+	,
+	ObjectRulesMatchPartial2 =
+			%{ 'simple': true, 'simpler': true }
+			-> 'should fail'
+		|	-> 'ok'
+	,
+	ObjectRulesMatchOptional =
+		@{ 'simple': true, 'simpler'?: true }
+		-> 'ok'
 }
