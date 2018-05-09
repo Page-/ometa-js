@@ -1,7 +1,7 @@
 {
   "name": "ometa-js",
   "description": "An object-oriented language for pattern matching",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "homepage": "http://tinlizzie.org/ometa-js/",
   "author": "Alessandro Warth <alexwarth@gmail.com> (http://awarth.blogspot.com/)",
   "contributors": [
@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "coa": "~0.3.9",
-    "colors": "^1.0.3",
+    "colors": "^1.2.4",
     "q": "~0.9.7",
-    "uglify-js": "^2.6.1"
+    "uglify-js": "^2.8.29"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -36,7 +36,8 @@
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-nodeunit": "~0.2.2",
-    "grunt-docco": "~0.3.0"
+    "grunt-docco": "~0.3.0",
+    "require-npm4-to-publish": "^1.0.0"
   },
   "engines": {
     "node": ">=0.2.0"
@@ -47,7 +48,8 @@
     }
   ],
   "scripts": {
-    "prepublish": "grunt",
+    "prepublish": "require-npm4-to-publish",
+    "prepublishOnly": "grunt",
     "test": "grunt nodeunit"
   }
 }
