@@ -1,3 +1,5 @@
+* Optimise super/`^` calls that don't pass arguments
+
 v1.4.2
 
 * Improved the performance of `_not` by allowing it to be optimised.
