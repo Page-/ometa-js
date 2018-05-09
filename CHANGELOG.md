@@ -1,3 +1,7 @@
+* Optimise `_or`
+* Optimise `_not` in the case the branch tracking is disabled.
+* Optimise super/`^` calls that don't pass arguments
+
 v1.4.2
 
 * Improved the performance of `_not` by allowing it to be optimised.
