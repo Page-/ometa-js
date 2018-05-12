@@ -1,3 +1,5 @@
+* Optimise `_many`
+
 v1.5.0
 
 * Optimise `_or`
