@@ -1,3 +1,5 @@
+v1.5.1
+
 * Optimise `_many`
 
 v1.5.0
