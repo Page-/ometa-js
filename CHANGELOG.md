@@ -1,4 +1,4 @@
-* Lazy load the cli run method as it's never used by compiled grammars so we can save some startup time and memory usage in those cases.
+* Lazy load uglifyjs and the cli run method as it's never used by compiled grammars so we can save some startup time and memory usage in those cases.
 
 v1.5.1
 
