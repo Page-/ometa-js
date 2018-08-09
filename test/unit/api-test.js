@@ -18,6 +18,15 @@ exports['compile should work (with nodeRequirePath)'] = function(test) {
   test.done();
 };
 
+exports['compile should work (with bareModule)'] = function(test) {
+  var simple = common.compile('simple', { bareModule: true });
+
+  test.ok(simple);
+  test.ok(/^var OMeta = require\(/g.test(simple));
+
+  test.done();
+};
+
 exports['evalCode should work'] = function(test) {
   var simple = common.evalCode('simple').Simple;
 
