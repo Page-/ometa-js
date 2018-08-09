@@ -44,6 +44,7 @@ Usage:
 Options:
   -h, --help : Help
   -v, --version : Version
+  -b, --bareModule : Prevent wrapping as AMD/CommonJS
   -i INPUT, --input=INPUT : Input file (default: stdin)
   -o OUTPUT, --output=OUTPUT : Output file (default: stdout)
   --root=ROOT : Path to root module (default: ometajs)
