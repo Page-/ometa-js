@@ -44,6 +44,7 @@ Usage:
 Options:
   -h, --help : Help
   -v, --version : Version
+  -c, --commonjs : Output as commonjs module
   -i INPUT, --input=INPUT : Input file (default: stdin)
   -o OUTPUT, --output=OUTPUT : Output file (default: stdout)
   --root=ROOT : Path to root module (default: ometajs)
