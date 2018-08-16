@@ -1,3 +1,7 @@
+v1.5.3
+
+* Added a --commonjs flag for generating commonjs modules which do not include a UMD.
+
 v1.5.2
 
 * Lazy load uglifyjs and the cli run method as it's never used by compiled grammars so we can save some startup time and memory usage in those cases.
