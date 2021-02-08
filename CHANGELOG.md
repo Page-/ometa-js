@@ -1,5 +1,9 @@
 v1.5.3
 
+* Fix calculation of the secondary divergence point when reusing memoizations
+
+v1.5.3
+
 * Added a --commonjs flag for generating commonjs modules which do not include a UMD.
 
 v1.5.2
